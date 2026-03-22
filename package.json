@@ -1,0 +1,24 @@
+{
+  "name": "magicerase",
+  "version": "1.0.0",
+  "description": "AI-powered image eraser tool - Remove objects from photos with one click",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "build": "tsc"
+  },
+  "keywords": [
+    "ai",
+    "image-editing",
+    "cloudflare-workers",
+    "clipdrop"
+  ],
+  "author": "周建华",
+  "license": "MIT",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240117.0",
+    "typescript": "^5.3.3",
+    "wrangler": "^3.28.0"
+  }
+}
