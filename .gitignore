@@ -1,9 +1,14 @@
 # Dependencies
 node_modules/
+.pnp
+.pnp.js
 
 # Build output
+.next/
+out/
+build/
 dist/
-.wrangler/
+.vercel/
 
 # Environment
 .env
@@ -13,6 +18,8 @@ dist/
 # Logs
 *.log
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # OS
 .DS_Store
@@ -23,6 +30,7 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+*~
 
 # Testing
 coverage/
@@ -30,3 +38,6 @@ coverage/
 # Temporary files
 tmp/
 temp/
+
+# TypeScript
+*.tsbuildinfo

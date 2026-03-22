@@ -4,15 +4,16 @@ AI-powered image eraser tool - Remove objects from photos with one click.
 
 ![MagicErase](https://img.shields.io/badge/Status-MVP-purple)
 ![License](https://img.shields.io/badge/License-MIT-blue)
-![Powered by](https://img.shields.io/badge/Powered%20by-Cloudflare%20%2B%20Clipdrop-orange)
+![Tech Stack](https://img.shields.io/badge/Stack-Next.js%20%2B%20Tailwind%20CSS-blueviolet)
 
 ## 🎯 Features
 
 - **One-Click Object Removal**: Simply paint over the object you want to remove
 - **AI-Powered Inpainting**: Smart background filling using Clipdrop API
 - **Privacy-First**: Images are processed in-memory, never stored
-- **Fast & Free**: Powered by Cloudflare Workers edge network
-- **No Installation**: Works directly in your browser
+- **Modern UI**: Built with Next.js 14 + Tailwind CSS
+- **Responsive Design**: Works perfectly on desktop and mobile
+- **Drag & Drop**: Easy image upload with drag and drop support
 
 ## 🚀 Quick Start
 
@@ -21,7 +22,6 @@ AI-powered image eraser tool - Remove objects from photos with one click.
 - Node.js 18+
 - npm or yarn
 - [Clipdrop API Key](https://clipdrop.co/apis)
-- [Cloudflare Account](https://dash.cloudflare.com/sign-up)
 
 ### Installation
 
@@ -38,22 +38,27 @@ AI-powered image eraser tool - Remove objects from photos with one click.
 
 3. **Configure environment**
    
-   Edit `wrangler.toml` and add your Clipdrop API key:
-   ```toml
-   [vars]
-   CLIPDROP_API_KEY = "your_clipdrop_api_key_here"
+   Create `.env.local` file:
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Edit `.env.local` and add your Clipdrop API key:
+   ```
+   CLIPDROP_API_KEY=your_clipdrop_api_key_here
    ```
 
-4. **Development mode**
+4. **Run development server**
    ```bash
    npm run dev
    ```
    
-   Open http://localhost:8787 in your browser
+   Open http://localhost:3000 in your browser
 
-5. **Deploy to Cloudflare**
+5. **Build for production**
    ```bash
-   npm run deploy
+   npm run build
+   npm run start
    ```
 
 ## 📖 How to Use
@@ -65,42 +70,50 @@ AI-powered image eraser tool - Remove objects from photos with one click.
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: Vanilla JavaScript + HTML5 Canvas
-- **Backend**: Cloudflare Workers (Serverless)
+- **Frontend**: Next.js 14 (App Router) + React 18
+- **Styling**: Tailwind CSS 3
+- **Language**: TypeScript
 - **AI Service**: Clipdrop Cleanup API
-- **Deployment**: Cloudflare Pages + Workers
-- **Styling**: Custom CSS (no frameworks)
+- **Deployment**: Vercel / Cloudflare Pages
 
 ## 📁 Project Structure
 
 ```
 magicerase/
-├── public/
-│   ├── index.html      # Main HTML page
-│   ├── style.css       # Styles
-│   └── app.js          # Frontend logic
 ├── src/
-│   └── index.ts        # Cloudflare Workers backend
+│   ├── app/
+│   │   ├── api/
+│   │   │   └── erase/
+│   │   │       └── route.ts      # API endpoint
+│   │   ├── globals.css           # Global styles
+│   │   ├── layout.tsx            # Root layout
+│   │   └── page.tsx              # Main page
+├── public/                       # Static assets
+├── .env.example                  # Environment template
+├── .env.local                    # Local environment (gitignored)
+├── next.config.js                # Next.js config
+├── tailwind.config.js            # Tailwind config
+├── tsconfig.json                 # TypeScript config
 ├── package.json
-├── wrangler.toml       # Cloudflare config
 └── README.md
 ```
 
 ## 💰 Cost
 
-- **Cloudflare Workers**: Free tier includes 100k requests/day
+- **Development**: Free (localhost)
+- **Vercel Hobby**: Free (100GB bandwidth/month)
 - **Clipdrop API**: 
   - Free: 100 images/month
   - Pay-as-you-go: ~$0.02/image
   
-**Estimated cost for 100 images/day**: ~$2/month
+**Estimated cost for 100 images/day**: ~$60/month
 
 ## 🔒 Privacy
 
 - Images are processed in-memory only
 - No images are stored on servers
 - All transfers use HTTPS encryption
-- API keys are stored securely in Workers environment variables
+- API keys are stored securely in environment variables
 
 ## 📝 API Reference
 
@@ -123,6 +136,23 @@ Content-Type: image/png
 Body: Processed image
 ```
 
+## 🚀 Deployment
+
+### Deploy to Vercel
+
+1. Push code to GitHub
+2. Go to [Vercel](https://vercel.com)
+3. Import your repository
+4. Add environment variable `CLIPDROP_API_KEY`
+5. Deploy!
+
+### Deploy to Cloudflare Pages
+
+1. Install Wrangler: `npm install -g wrangler`
+2. Login: `wrangler login`
+3. Build: `npm run build`
+4. Deploy: `wrangler pages deploy .next`
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
@@ -140,8 +170,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🙏 Acknowledgments
 
 - [Clipdrop](https://clipdrop.co/) for the amazing AI API
-- [Cloudflare Workers](https://workers.cloudflare.com/) for the serverless platform
-- [Cleanup.pictures](https://cleanup.pictures/) for inspiration
+- [Next.js](https://nextjs.org/) for the React framework
+- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS
 
 ## 📞 Contact
 
